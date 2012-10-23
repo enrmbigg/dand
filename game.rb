@@ -1,4 +1,4 @@
-name = "Aaron"
+name = "aaron"
 health ="60"
 puts "#{name}\'s health is #{health}"
 
