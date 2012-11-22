@@ -2,6 +2,9 @@ class Player
 attr_accessor:name
 attr_reader :score
 attr_reader :health
+before do 
+  $stdout = StringIO.new 
+end
 def initialize(name,health=100)
 
 @name = name.capitalize
@@ -30,6 +33,11 @@ end
 def score
 
 @name.length * @health
+
+end
+def strong?
+
+@health >= 100
 
 end
 
