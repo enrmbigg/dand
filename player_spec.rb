@@ -1,6 +1,7 @@
-require_relative 'testfile'
+require_relative 'player'
 describe 'Player' do
-	before do
+	before do 
+		 $stdout = StringIO.new 
 		 @player = Player.new("aaron", 150)
 		 @player2 = Player.new("syntha",60)
 	end
@@ -28,7 +29,10 @@ it "decreases health by 10 when blammed" do
 	@player2.blam
 	@player2.health.should == 50
 end
-#it "is player strong?" do
-#	@player2.strong?.should == false
-#end
+it "is strong" do
+  @player.strong? == true
+end
+it "is weak" do
+  @player2.should_not be_strong
+end
 end

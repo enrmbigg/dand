@@ -1,10 +1,9 @@
+require_relative 'game'
 class Player
 attr_accessor:name
 attr_reader :score
 attr_reader :health
-before do 
-  $stdout = StringIO.new 
-end
+
 def initialize(name,health=100)
 
 @name = name.capitalize
@@ -37,11 +36,14 @@ def score
 end
 def strong?
 
-@health >= 100
-
+if @health >= 100
+	puts "I am strong!!"
+else 
+	puts "I am puny :("
+end
+end
 end
 
-end
 player1 = Player.new("aaron")
 player2 = Player.new("syntha",60)
 player3 = Player.new("molvak",125)
