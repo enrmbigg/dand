@@ -1,4 +1,4 @@
-require_relative 'die'
+require_relative 'game_turn'
 require_relative 'player'
 
 class Game
@@ -21,31 +21,40 @@ def players
 	puts @players
 end
 
-def play 
-    puts "There are #{@players.size} players in #{@title}: "
- 
+def play(rounds)
+  puts "\nThere are #{@players.size} players in #{@title}: "
   @players.each do |player|
+      puts player
+    end
+    1.upto(rounds) do |count|
+      puts "\nRound: #{count}"
+  @players.each do |player|
+    GameTurn.take_turn(player)
     puts player
   end
+end
+end
+  def print_stats
+    puts "\n#{@title}'s Stats:"
     
-    @players.each do |i|
-    die = Die.new
-      case die.roll_die
-       when  1..2
-      	i.blam
-      	puts "#{i.name} has taken a hit"
-       when  3..4
-        puts  "Nothing happend to #{i.name}"
-       else 
-      	i.wooted
-     	  puts "#{i.name} has been given life"
-       end 
-      
-end
+    strong, weak =@players.partition { |player| player.Strong? }
+   
+    puts "\n#{@title} High Scores:"
+    @players.sort.each do |player|
+      puts "#{player.formatted_name} #{player.score}"
+    end
+
+    puts "\nStrong Players:"
+    puts strong.sort
+    
+    puts "\nWeak Players:"
+    puts weak.sort
+    
+  end
 
 end
 
-end
+
 # player1 = Player.new("aaron")
 # player2 = Player.new("syntha",60)
 # player3 = Player.new("molvak",125)

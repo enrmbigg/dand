@@ -41,10 +41,9 @@ if @health >= 100
 else 
 	puts "I am puny :("
 end
-end
+
 end
 
-player1 = Player.new("aaron")
-player2 = Player.new("syntha",60)
-player3 = Player.new("molvak",125)
-player4 = Player.new("Lorek",90)
+end
+
+
