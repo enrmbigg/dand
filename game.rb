@@ -1,5 +1,6 @@
 require_relative 'game_turn'
 require_relative 'player'
+require_relative 'treasure_trove'
 
 class Game
 
@@ -26,33 +27,41 @@ def play(rounds)
   @players.each do |player|
       puts player
     end
+    treasure = TreasureTrove::TREASURES
+    puts "There are #{treasure.size} items in the game to collect"
+    treasures.each do |treasure|
+      puts "A #{treasure.name} is worth #{treasure.points} points"
+    end
     1.upto(rounds) do |count|
-      puts "\nRound: #{count}"
+      puts "\nRound: #{count}:"
   @players.each do |player|
     GameTurn.take_turn(player)
-    puts player
   end
 end
-end
+
   def print_stats
     puts "\n#{@title}'s Stats:"
     
-    strong, weak =@players.partition { |player| player.Strong? }
+    strong , weak = @players.partition { |player| player.strong? }
    
     puts "\n#{@title} High Scores:"
-    @players.sort.each do |player|
-      puts "#{player.formatted_name} #{player.score}"
+    @players.sort_by {|player| player.score}.reverse
+      puts "#{player.name} #{player.score}"
     end
 
-    puts "\nStrong Players:"
-    puts strong.sort
+    puts "\n#{@title}'s #{strong.size} strongest players:"
+    @players.sort_by {|player| player.health}
+      puts "#{player.name} #{player.health}"
+    end
     
-    puts "\nWeak Players:"
-    puts weak.sort
+    puts "\n#{@title}'s #{weak.size} weak players:"
+    @players.sort_by {|player| player.health}.reverse
+      puts "#{player.name} #{player.health}"
+    end
     
   end
-
 end
+
 
 
 # player1 = Player.new("aaron")
