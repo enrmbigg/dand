@@ -27,8 +27,8 @@ def play(rounds)
   @players.each do |player|
       puts player
     end
-    treasure = TreasureTrove::TREASURES
-    puts "There are #{treasure.size} items in the game to collect"
+    treasures = TreasureTrove::TREASURES
+    puts "There are #{treasures.size} items in the game to collect"
     treasures.each do |treasure|
       puts "A #{treasure.name} is worth #{treasure.points} points"
     end
@@ -45,46 +45,23 @@ end
     strong , weak = @players.partition { |player| player.strong? }
    
     puts "\n#{@title} High Scores:"
-    @players.sort_by {|player| player.score}.reverse
-      puts "#{player.name} #{player.score}"
-    end
-
-    puts "\n#{@title}'s #{strong.size} strongest players:"
-    @players.sort_by {|player| player.health}
-      puts "#{player.name} #{player.health}"
+    @players.sort.each do |player|
+      puts "#{player.formatted_name} #{player.score}"
     end
     
-    puts "\n#{@title}'s #{weak.size} weak players:"
-    @players.sort_by {|player| player.health}.reverse
-      puts "#{player.name} #{player.health}"
+    # puts "\n#{@title}'s #{strong.size} strongest players:"
+    # strong.sort.each do |player|
+    #   puts "#{player.formatted_name} #{player.health}"
+    # end
+    puts "\n#{@title}'s #{weak.size} strongest players:"
+    weak.sort.each do |player|
+      puts "#{player.formatted_name} #{player.health}"
     end
     
+    # puts "\n#{@title} Treasure Totals:"
+    # @players.sort.each do |player|
+    #   puts "#{player.formatted_name} #{player.points}"
+    # end
   end
 end
-
-
-
-# player1 = Player.new("aaron")
-# player2 = Player.new("syntha",60)
-# player3 = Player.new("molvak",125)
-# player4 = Player.new("Lorek",90)
-
-# array
-
-# players = [player1, player2, player3]
-
-# dungeon = Game.new("dungeon and dragons")
-
-# dungeon.add_player(player1)
-# dungeon.add_player(player2)
-# dungeon.add_player(player3)
-# dungeon.add_player(player4)
-# puts dungeon.list
-# puts dungeon.players
-# puts dungeon.play
-
-
-
-
-
-
+end

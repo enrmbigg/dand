@@ -8,20 +8,25 @@ module GameTurn
 
 def self.take_turn(player)
 number_rolled = roll_die
+treasure = TreasureTrove.random
 case number_rolled	
   when 1..2
       player.blam
-      t=TreasureTrove.Random
-      puts "#{player.name} has found #{t.name}"
+      puts "#{player.name} was hit"
+      player.found_treasure(treasure)
+         
   when 3..4
       puts "#{player.name} was skipped."
-      t=TreasureTrove.Random
-      puts "Though #{player.name} has also found #{t.name}"
+      player.found_treasure(treasure)
+      
   else
       player.wooted
-      t=TreasureTrove.Random
-      puts "#{player.name} has found #{t.name}"
+      puts "#{player.name} was healed"
+      player.found_treasure(treasure)
+      
   end
     puts player
 end
 end
+    
+    

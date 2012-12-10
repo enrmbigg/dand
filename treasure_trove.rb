@@ -1,15 +1,15 @@
-Treasure = Struct.new(:name,:points)
+Treasures = Struct.new(:name,:points)
 
 module TreasureTrove
 	
 	TREASURES = [
 
-		Treasure.new(:pie,5),
-		Treasure.new(:bottle,25),
-		Treasure.new(:hammer,50),
-		Treasure.new(:skillet,100),
-		Treasure.new(:crowbar,200),
-		Treasure.new(:broomstick,400)
+		Treasures.new(:pie,5),
+		Treasures.new(:bottle,25),
+		Treasures.new(:hammer,50),
+		Treasures.new(:skillet,100),
+		Treasures.new(:crowbar,200),
+		Treasures.new(:broomstick,400)
 	]
 	def self.random
 
@@ -18,4 +18,11 @@ module TreasureTrove
 	end
 
 end
-# puts TREASURES[0].name
+if __FILE__ == $0
+
+  puts TreasureTrove::TREASURES
+
+  Treasure = TreasureTrove.random
+  puts "Enjoy your #{Treasure.name} (#{Treasure.alcohol}% alcohol by volume)"
+  
+end

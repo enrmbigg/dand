@@ -11,6 +11,16 @@ describe Game do
     
     @game.add_player(@players)
   end
+  it "assigns a treasure for points during a player's turn" do     
+  game = Game.new("Knuckleheads")
+  player = Player.new("Aaron")
+     
+  game.add_player(player)
+  
+  game.play(1)
+  
+  player.points.should_not be_zero
+end
 
 # it "Low Number" do
 #   GameTurn.stub(:roll_die).and_return(1)
