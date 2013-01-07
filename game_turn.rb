@@ -1,4 +1,5 @@
 require_relative 'treasure_trove'
+require_relative 'player'
 
 module GameTurn
 
@@ -9,6 +10,7 @@ module GameTurn
 def self.take_turn(player)
 number_rolled = roll_die
 treasure = TreasureTrove.random
+puts " "
 case number_rolled	
   when 1..2
       player.blam
@@ -26,6 +28,7 @@ case number_rolled
       
   end
     puts player
+    
 end
 end
     

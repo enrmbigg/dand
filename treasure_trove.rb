@@ -23,6 +23,6 @@ if __FILE__ == $0
   puts TreasureTrove::TREASURES
 
   Treasure = TreasureTrove.random
-  puts "Enjoy your #{Treasure.name} (#{Treasure.alcohol}% alcohol by volume)"
+  puts "#{Treasure.name} (#{Treasure.points})"
   
 end

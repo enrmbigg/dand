@@ -9,7 +9,7 @@ def initialize(name,health=100)
 
 @name = name.capitalize
 @health = health
-@score = score
+# @score = score
 @found_treasure = Hash.new(0)
  
 
@@ -22,10 +22,10 @@ def found_treasure(treasures)
 end
 def points
     @found_treasure.values.reduce(0, :+)
-  end
+end
 def to_s
 
-"I'm #{@name} with a health = #{@health}, points = #{points} and #{score}."
+"I'm #{@name} with a health = #{@health}, points = #{points} and score = #{score}."
 
 end	
 
@@ -44,6 +44,13 @@ def score
 @health + points
 
 end
+def each_treasure_found
+	@found_treasure.each do |name, value|
+		treasure = Treasures.new(name, value)
+		yield treasure
+	end
+end
+
 def strong?
 
 if @health > 75

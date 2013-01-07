@@ -55,9 +55,30 @@ it "computes points as the sum of all treasure points" do
     @player.points.should == 500
   end
   it "has a string representation" do  
-  @player.found_treasure(Treasure.new(:hammer, 50))
-  @player.found_treasure(Treasure.new(:hammer, 50))
+  @player.found_treasure(Treasures.new(:hammer, 50))
+  @player.found_treasure(Treasures.new(:hammer, 50))
 
   @player.to_s.should == "I'm Syntha with health = 150, points = 100, and score = 250."
+end
+it "yields each found treasure and its total points" do
+  @player.found_treasure(Treasures.new(:bladder of wine, 100))
+  @player.found_treasure(Treasures.new(:bladder of wine, 100))
+  @player.found_treasure(Treasures.new(:hammer, 50))
+  @player.found_treasure(Treasures.new(:bottle, 5))
+  @player.found_treasure(Treasures.new(:bottle, 5))
+  @player.found_treasure(Treasures.new(:bottle, 5))
+  @player.found_treasure(Treasures.new(:bottle, 5))
+  @player.found_treasure(Treasures.new(:bottle, 5))
+  
+  yielded = []
+  @player.each_found_treasure do |treasure|
+    yielded << treasure
+  end
+  
+  yielded.should == [
+    Treasures.new(:bladder of wine, 200), 
+    Treasures.new(:hammer, 50), 
+    Treasures.new(:bottle, 25)
+ ]
 end
 end
