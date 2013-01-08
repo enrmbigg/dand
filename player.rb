@@ -29,6 +29,23 @@ def to_s
 
 end	
 
+# def load_players(filename)
+# File.readlines(filename).each do |line|
+# add_player(player.from_csv(line))
+# end
+# end
+
+def self.from_csv(line)
+
+name, health = line.split(',')
+Player.new(name, Integer(health))
+
+end
+
+def to_csv
+	"#{@name}, #{@health}"
+end
+
 def blam
 
 @health = @health - 10

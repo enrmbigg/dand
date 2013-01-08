@@ -18,9 +18,25 @@ def list
 "This game is called #{@title}"
 end
 
-# def players
-# 	puts @players
-# end
+def load_players(filename)
+File.readlines(filename).each do |line|
+add_player(Player.from_csv(line))
+end
+end
+
+def save(to_file = "High_scores.txt")
+File.open(to_file, 'w') do |file|
+file.puts "#{@title} High scores:"
+  @players.sort.each do |player|
+    
+    file.puts player.to_csv
+  end
+end
+end
+
+def players
+	puts @players
+end
 
 def play(rounds)
   puts "\nThere are #{@players.size} players in #{@title}: "
@@ -57,8 +73,8 @@ end
     # end
 
    
-    puts "\n#{@title}'s #{strong.size} strongest players:"
-    strong.sort.each do |player|
+    puts "\n#{@title}'s #{weak.size} strongest players:"
+    weak.sort.each do |player|
       puts "#{player.formatted_name} #{player.health}"
     end
     
