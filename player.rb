@@ -1,6 +1,8 @@
 require_relative 'game'
 require_relative 'treasure_trove'
+require_relative 'playable'
 class Player
+	include Playable
 attr_accessor:name
 attr_reader :score
 attr_reader :health
@@ -12,7 +14,6 @@ def initialize(name,health=100)
 # @score = score
 @found_treasure = Hash.new(0)
  
-
 end
 def found_treasure(treasures)
 	@found_treasure[treasures.name] += treasures.points
@@ -24,9 +25,7 @@ def points
     @found_treasure.values.reduce(0, :+)
 end
 def to_s
-
 "I'm #{@name} with a health = #{@health}, points = #{points} and score = #{score}."
-
 end	
 
 # def load_players(filename)
@@ -36,26 +35,14 @@ end
 # end
 
 def self.from_csv(line)
-
 name, health = line.split(',')
 Player.new(name, Integer(health))
-
 end
 
 def to_csv
 	"#{@name}, #{@health}"
 end
 
-def blam
-
-@health = @health - 10
-
-end
-def wooted
-
-@health = @health + 15
-
-end
 def score
 
 @health + points
@@ -68,22 +55,17 @@ def each_treasure_found
 	end
 end
 
-def strong?
 
-if @health > 75
-	puts "#{@name} is strong!!"
-else 
-	puts "#{@name} is puny :("
-end
 def formatted_name
     @name.ljust(20, '.')
 end
 def <=>(other_player)
     other_player.score <=> score
 end  
-
 end
 
-end
+
+
+
 
 

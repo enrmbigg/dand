@@ -18,8 +18,8 @@ it "has a string representation" do
 end
 
 it "computes a score as the sum of its health and points" do
-  @player.found_treasure(Treasure.new(:hammer, 50))
-  @player.found_treasure(Treasure.new(:hammer, 50))
+  @player.found_treasure(Treasures.new(:hammer, 50))
+  @player.found_treasure(Treasures.new(:hammer, 50))
   
   @player.score.should == 250
 end
