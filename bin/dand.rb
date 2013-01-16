@@ -29,7 +29,10 @@ loop do
 	input = gets.chomp.downcase
 	case input
 	when /^\d+$/
-		game.play(input.to_i)
+		game.play(input.to_i) do #number of rounds
+	game.total_points >= 3000
+end
+	end
 when 'quit', 'exit'
 		game.print_stats
 		game.save
