@@ -60,7 +60,7 @@ end
   def print_stats
     puts "\n#{@title}'s Stats:"
     
-    strong , weak = @players.partition { |player| player.strong? }
+    weak ,strong = @players.partition { |player| player.strong? }
    
     puts "\n#{@title} High Scores:"
     @players.sort.each do |player|
