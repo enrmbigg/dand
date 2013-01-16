@@ -1,3 +1,4 @@
+module Dand
 module Playable
 	def blam
 
@@ -12,12 +13,13 @@ module Playable
 	def strong?
 
 	if @health > 100
-		puts "#{@name} is strong!!"
+		puts "#{@name} is strong!! #{@name} has a health of #{@health}"
 	else 
-		puts "#{@name} is puny :("	
+		puts "#{@name} is puny :(  #{@name} has a health of #{@health}"	
 	end
 	def <=>(other_player)
     other_player.score <=> score
 	end  
+end
 end
 end

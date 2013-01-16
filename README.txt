@@ -1,0 +1,2 @@
+Dand is a Dungeon and Dragon style game at a basic level in which 6 set players are simulated to see who comes out at top.
+The players also collect treasure in which contributes to whether that player leads the highscore board.   

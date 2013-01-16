@@ -1,4 +1,5 @@
 require_relative 'auditable'
+module Dand
 class LoadedDie
 	include Auditable
   attr_reader :number
@@ -7,4 +8,5 @@ class LoadedDie
     numbers = [1, 1, 2, 5, 6, 6]
     @number = numbers.sample
    end  
+end
 end

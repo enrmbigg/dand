@@ -1,6 +1,7 @@
 require_relative 'game'
 require_relative 'treasure_trove'
 require_relative 'playable'
+module Dand
 class Player
 	include Playable
 attr_accessor:name
@@ -16,9 +17,12 @@ def initialize(name,health=100)
  
 end
 def found_treasure(treasures)
+
 	@found_treasure[treasures.name] += treasures.points
     puts "#{@name} found a #{treasures.name} which is worth #{treasures.points} points."
     puts "#{@name}'s treasures: #{@found_treasure}"
+
+
 
 end
 def points
@@ -36,7 +40,7 @@ end
 
 def self.from_csv(line)
 name, health = line.split(',')
-Player.new(name, Integer(health))
+Dand::Player.new(name, Integer(health))
 end
 
 def to_csv
@@ -50,7 +54,7 @@ def score
 end
 def each_treasure_found
 	@found_treasure.each do |name, value|
-		treasure = Treasures.new(name, value)
+		treasure = Dand::Treasures.new(name, value)
 		yield treasure
 	end
 end
@@ -61,7 +65,7 @@ def formatted_name
 end
 
 end
-
+end
 
 
 

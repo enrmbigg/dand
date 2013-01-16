@@ -1,23 +1,23 @@
-require_relative 'game'
-
+require 'dand/game'
+module Dand
 describe Game do
 
   before do
   	$stdout = StringIO.new
-    @game = Game.new("Knuckleheads")
+    @game = Dand::Game.new("Knuckleheads")
 
     @initial_health = 100
-    @players = Player.new("moe", @initial_health)
+    @players = Dand::Player.new("moe", @initial_health)
     
     @game.add_player(@players)
   end
   it "assigns a treasure for points during a player's turn" do     
-  game = Game.new("Knuckleheads")
-  player = Player.new("Aaron")
+  # game = Game.new("Knuckleheads")
+  player = Dand::Player.new("Aaron")
      
-  game.add_player(player)
+  @game.add_player(player)
   
-  game.play(1)
+  @game.play(1)
   
   player.points.should_not be_zero
 end
@@ -40,6 +40,6 @@ end
 #   @players.health.should == @initial_health
 # end
 
-
+end
 
 end

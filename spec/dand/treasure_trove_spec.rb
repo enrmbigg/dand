@@ -1,9 +1,9 @@
-require_relative 'treasure_trove'
-   
+require 'dand/treasure_trove'
+module Dand  
 describe Treasures do
   
   before do
-    @treasure = Treasures.new(:hammer, 50)
+    @treasure = Dand::Treasures.new(:hammer, 50)
   end
   
   it "has a name attribute" do
@@ -51,4 +51,5 @@ describe TreasureTrove do
     TreasureTrove::TREASURES.should include(treasure)
   end
 
+end
 end

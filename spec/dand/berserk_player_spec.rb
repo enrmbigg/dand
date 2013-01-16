@@ -1,5 +1,5 @@
-require_relative 'berserk_player'
-
+require 'dand/berserk_player'
+module Dand
  describe BerserkPlayer do
 
    before do
@@ -28,3 +28,4 @@ require_relative 'berserk_player'
    end
 
  end 
+end

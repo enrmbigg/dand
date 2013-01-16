@@ -1,25 +1,24 @@
 require_relative 'player'
-
+module Dand
 class ClumsyPlayer < Player
 	def found_treasure(treasures)
-	points = treasures.points / 2
-	@found_treasure[treasures.name] += treasures.points
-	puts "#{@name} found a #{treasures.name} which is worth #{treasures.points} points."
-    puts "#{@name}'s treasures: #{@found_treasure}"
+  Dand::Treasures.new(treasures.name, treasures.points / 2)  
 
+  super
   end
+end
 end
 
 
 if __FILE__ == $0
-  clumsy = ClumsyPlayer.new("klutz")  
+  clumsy = Dand::ClumsyPlayer.new("klutz")  
   
-  hammer = Treasures.new(:hammer, 50)
+  hammer = Dand::Treasures.new(:hammer, 50)
   clumsy.found_treasure(hammer)
   clumsy.found_treasure(hammer)
   clumsy.found_treasure(hammer)
   
-  crowbar = Treasures.new(:crowbar, 400)
+  crowbar = Dand::Treasures.new(:crowbar, 400)
   clumsy.found_treasure(crowbar)
   
   clumsy.each_treasure_found do |treasure|

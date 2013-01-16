@@ -1,21 +1,22 @@
-require_relative 'clumsy_player'
+require 'dand/clumsy_player'
+module Dand
  describe ClumsyPlayer do
   before do
     $stdout = StringIO.new 
-    @player = ClumsyPlayer.new("klutz")
+    @player = Dand::ClumsyPlayer.new("klutz")
   end
   
   it "only gets half the point value for each treasure" do
     @player.points.should == 0
 
-    hammer = Treasures.new(:hammer, 50)
+    hammer = Dand::Treasures.new(:hammer, 50)
     @player.found_treasure(hammer)
     @player.found_treasure(hammer)
     @player.found_treasure(hammer)
 
     @player.points.should == 75
 
-    crowbar = Treasures.new(:crowbar, 400)
+    crowbar = Dand::Treasures.new(:crowbar, 400)
     @player.found_treasure(crowbar)
     
     @player.points.should == 275    
@@ -25,7 +26,8 @@ require_relative 'clumsy_player'
       yielded << treasure
     end
 
-    yielded.should == [Treasures.new(:hammer, 75), Treasure.new(:crowbar, 200)]    
+    yielded.should == [Dand::Treasures.new(:hammer, 75), Treasure.new(:crowbar, 200)]    
   end
 
+end
 end
