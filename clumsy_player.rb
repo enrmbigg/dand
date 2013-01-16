@@ -7,7 +7,7 @@ class ClumsyPlayer < Player
 	puts "#{@name} found a #{treasures.name} which is worth #{treasures.points} points."
     puts "#{@name}'s treasures: #{@found_treasure}"
 
-end
+  end
 end
 
 

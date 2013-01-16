@@ -1,6 +1,7 @@
 require_relative 'clumsy_player'
  describe ClumsyPlayer do
   before do
+    $stdout = StringIO.new 
     @player = ClumsyPlayer.new("klutz")
   end
   

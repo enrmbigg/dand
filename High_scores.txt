@@ -1,6 +1,7 @@
 Dungeon and dragons High scores:
-Klutz, 135
-Aaron, 90
-Molvak, 140
-Lorek, 105
-Syntha, 40
+Aaron, 515
+Brick, 305
+Klutz, 170
+Molvak, 145
+Lorek, 130
+Syntha, 100

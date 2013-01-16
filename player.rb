@@ -40,7 +40,7 @@ Player.new(name, Integer(health))
 end
 
 def to_csv
-	"#{@name}, #{@health}"
+	"#{@name}, #{score}"
 end
 
 def score
@@ -59,9 +59,7 @@ end
 def formatted_name
     @name.ljust(20, '.')
 end
-def <=>(other_player)
-    other_player.score <=> score
-end  
+
 end
 
 

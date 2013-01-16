@@ -73,13 +73,13 @@ end
     # end
 
    
-    puts "\n#{@title}'s #{weak.size} strongest players:"
-    weak.sort.each do |player|
+    puts "\n#{@title}'s #{@players.size} strongest players:"
+    @players.sort.each do |player|
       puts "#{player.formatted_name} #{player.health}"
     end
     
     puts "\n#{@title} Treasure Totals:"
-@players.sort.each do |players|
+    @players.sort.each do |players|
       puts "#{players.formatted_name} #{players.points}"
         
       
